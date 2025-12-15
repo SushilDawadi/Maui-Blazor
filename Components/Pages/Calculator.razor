@@ -1,0 +1,51 @@
+@* Task 2  *@
+
+@page "/calculator"
+<!-- Note: Namespace is added to match with the code-behind
+ file so Razor can access variables and methods -->
+@namespace MyMauiApp.Pages
+
+<div class="container mt-5">
+    <h2>Simple Calculator</h2>
+
+    <div class="calculator-box">
+        <div class="form-group">
+            <label>First Number:</label>
+            <input type="number" class="form-control" @bind="firstNumber" />
+        </div>
+
+        <div class="form-group">
+            <label>Second Number:</label>
+            <input type="number" class="form-control" @bind="secondNumber" />
+        </div>
+
+        <div class="btn-group mt-3" role="group">
+            <button class="btn btn-primary" @onclick="Add">Add (+)</button>
+            <button class="btn btn-success" @onclick="Subtract">Subtract (-)</button>
+            <button class="btn btn-warning" @onclick="Multiply">Multiply (×)</button>
+            <button class="btn btn-danger" @onclick="Divide">Divide (÷)</button>
+            @* TODO: Add Clear Button to Clear the first number, second number and result *@
+        </div>
+
+        <div class="result mt-4">
+            <h4>Result: @result</h4>
+        </div>
+    </div>
+</div>
+
+<style>
+    .calculator-box {
+        max-width: 400px;
+        padding: 20px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .result {
+        padding: 15px;
+        background-color: #e9ecef;
+        border-radius: 5px;
+        text-align: center;
+    }
+</style>

@@ -1,0 +1,64 @@
+@* Task 1 *@
+
+@page "/"
+
+
+<div class="container">
+    <h2 class="text-center mb-4">Products</h2>
+
+    <div class="row">
+        @foreach (var product in products)
+        {
+            <div class="col-md-4 d-flex justify-content-center">
+                <ProductCard ProductItem="product" />
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private List<Product> products = new List<Product>
+{
+new Product
+{
+Id = 1,
+Name = "Laptop",
+Image = "https://mudita.com.np/laptops-nepal.html",
+Price = 999.99m,
+LikesCount = 150
+},
+new Product
+{
+Id = 2,
+Name = "Smartphone",
+Image =
+"https://www.techadvisor.com/article/724318/best-phone.html",
+Price = 699.99m,
+LikesCount = 320
+},
+new Product
+{
+Id = 3,
+Name = "Headphones",
+Image = "https://www.daraz.com.np/products/hyperx-cloud-ii-gaming-headset-i103208404.html",
+Price = 149.99m,
+LikesCount = 89
+},
+new Product
+{
+Id = 4,
+Name = "Smartwatch",
+Image = "https://www.apple.com/shop/buy-watch/apple-watch",
+Price = 299.99m,
+LikesCount = 210
+},
+new Product
+{
+Id = 5,
+Name = "Tablet",
+Image = "https://www.nytimes.com/wirecutter/reviews/best-tablets/",
+Price = 449.99m,
+LikesCount = 175
+}
+};
+}

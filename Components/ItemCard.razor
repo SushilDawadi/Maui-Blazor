@@ -1,0 +1,61 @@
+<div class="item-card">
+    <div class="item-header">
+        <h4>🍽️ @Name</h4>
+    </div>
+    <div class="item-body">
+        <p><strong>🥗 Ingredients:</strong> @Ingredients</p>
+        <p class="price"><strong>💰 Price:</strong> $@Price.ToString("F2")</p>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string? Name { get; set; }
+
+    [Parameter]
+    public string? Ingredients { get; set; }
+
+    [Parameter]
+    public decimal Price { get; set; }
+}
+
+<style>
+    .item-card {
+        border: 3px solid #28a745;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 15px 0;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+    }
+
+    .item-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+        border-color: #218838;
+    }
+
+    .item-header {
+        border-bottom: 3px solid #28a745;
+        padding-bottom: 12px;
+        margin-bottom: 15px;
+    }
+
+    .item-header h4 {
+        color: #28a745;
+        margin: 0;
+        font-size: 1.5em;
+    }
+
+    . item-body p {
+        margin: 10px 0;
+        font-size: 1.1em;
+    }
+
+    .price {
+        color: #dc3545;
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+</style>

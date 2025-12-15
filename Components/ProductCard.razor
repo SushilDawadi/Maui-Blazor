@@ -1,0 +1,50 @@
+@* Task1 Product Componenet -> reusable ui *@
+
+<div class="card product-card">
+    <img src="@ProductItem?.Image" class="card-img-top" alt="@ProductItem?.Name">
+    <div class="card-body">
+        <h5 class="card-title">@ProductItem?.Name</h5>
+        <p class="card-text">
+            <strong>Price:</strong> $@ProductItem?.Price.ToString("F2")
+        </p>
+        <p class="card-text">
+            <strong>Likes:</strong> @ProductItem?.LikesCount
+        </p>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Product? ProductItem { get; set; }
+}
+
+<style>
+    .product-card {
+        margin: 10px;
+        width: 100%;
+        max-width: 18rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .product-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        background-color: white;
+    }
+
+    .card-title {
+        color: #007bff;
+        font-weight: bold;
+    }
+</style>

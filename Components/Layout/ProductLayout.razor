@@ -1,0 +1,103 @@
+@* Task1 Product Layout
+   This layout includes:
+   - Sidebar with NavMenu
+   - Header with store branding
+   - Main content area (@Body)
+   - Footer with copyright
+*@
+
+@inherits LayoutComponentBase
+
+<div class="page">
+
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+
+    <main class="main">
+
+        <header class="header">
+            <h1>🛒 My Store App</h1>
+        </header>
+
+
+        <article class="content">
+            @Body
+        </article>
+
+
+        <footer class="footer">
+            <p>© 2025 My Store</p>
+        </footer>
+    </main>
+</div>
+
+<style>
+    .page {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        min-height: 100vh;
+    }
+
+
+    .sidebar {
+        background: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+        width: 260px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-y: auto;
+    }
+
+
+    .main {
+        flex: 1;
+        margin-left: 260px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+        background-color: #007bff;
+        color: white;
+        padding: 25px 30px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    . header h1 {
+        margin: 0;
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+
+    .content {
+        flex: 1;
+        padding: 30px;
+        background-color: #f8f9fa;
+        min-height: calc(100vh - 200px);
+    }
+
+
+    .footer {
+        background-color: #343a40;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: auto;
+    }
+
+    . footer p {
+        margin: 0;
+        font-size: 1.1em;
+    }
+</style>

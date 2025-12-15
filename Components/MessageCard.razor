@@ -1,0 +1,23 @@
+<div class="message-card">
+    <div class="message-header">
+        <h3 class="message-title">@Title</h3>
+        <span class="message-timestamp">
+            @Timestamp.ToString("g")
+        </span>
+    </div>
+
+    <div class="message-body">
+        <p>@Message</p>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = "";
+
+    [Parameter]
+    public string Message { get; set; } = "";
+
+    [Parameter]
+    public DateTime Timestamp { get; set; } = DateTime.Now;
+}

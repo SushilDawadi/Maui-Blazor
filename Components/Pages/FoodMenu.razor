@@ -1,0 +1,96 @@
+@page "/foodmenu"
+
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4 menu-title">🍴 Food Menu with Sorting 🍴</h2>
+
+    <!-- Sorting Buttons -->
+    <div class="text-center mb-4">
+        <button class="btn btn-primary btn-lg me-3" @onclick="SortByPrice">
+            📊 Sort by Price
+        </button>
+        <button class="btn btn-success btn-lg" @onclick="SortByName">
+            🔤 Sort by Name
+        </button>
+    </div>
+
+    <div class="menu-container">
+        @foreach (var item in foodItems)
+        {
+            <ItemCard Name="@item.Name" Ingredients="@item.Ingredients" Price="@item.Price" />
+        }
+    </div>
+</div>
+
+@code {
+    private List<Item> foodItems = new List<Item>
+{
+new Item
+{
+Name = "Margherita Pizza",
+Ingredients = "Tomato, Mozzarella, Basil, Olive Oil",
+Price = 12.99m
+},
+new Item
+{
+Name = "Chicken Burger",
+Ingredients = "Chicken Patty, Lettuce, Tomato, Mayo, Bun",
+Price = 8.99m
+},
+new Item
+{
+Name = "Caesar Salad",
+Ingredients = "Romaine Lettuce, Croutons, Parmesan, Caesar Dressing",
+Price = 7.49m
+},
+new Item
+{
+Name = "Spaghetti Carbonara",
+Ingredients = "Pasta, Bacon, Egg, Parmesan, Black Pepper",
+Price = 14.99m
+},
+new Item
+{
+Name = "Chocolate Brownie",
+Ingredients = "Chocolate, Butter, Sugar, Eggs, Flour",
+Price = 5.99m
+},
+new Item
+{
+Name = "Apple Pie",
+Ingredients = "Apples, Cinnamon, Sugar, Pie Crust",
+Price = 6.99m
+},
+new Item
+{
+Name = "BBQ Ribs",
+Ingredients = "Pork Ribs, BBQ Sauce, Spices",
+Price = 18.99m
+}
+};
+
+    // LINQ Method: Sort by Price (Ascending - Lowest to Highest)
+    private void SortByPrice()
+    {
+        foodItems = foodItems.OrderBy(item => item.Price).ToList();
+    }
+
+    // LINQ Method: Sort by Name (Alphabetically A-Z)
+    private void SortByName()
+    {
+        foodItems = foodItems.OrderBy(item => item.Name).ToList();
+    }
+}
+
+<style>
+    .menu-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .menu-title {
+        color: #28a745;
+        font-weight: bold;
+        font-size: 2.5em;
+    }
+</style>

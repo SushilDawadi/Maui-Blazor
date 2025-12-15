@@ -1,0 +1,22 @@
+﻿@page "/home"
+
+
+
+<input type="text" placeholder="Enter your name" @bind="name" />
+<h1>Hello, @name!</h1>
+@* one way data binding  *@
+
+<p>Hello World</p>
+
+
+<MessageCard Message="This is danger" Title="Alert" />
+<MessageCard Message="happy birthday to you" Title="Wish" />
+<MessageCard Message="Happy wedding" Title="Wish" />
+
+
+
+
+
+@code {
+    private string name = "ICP";
+}
