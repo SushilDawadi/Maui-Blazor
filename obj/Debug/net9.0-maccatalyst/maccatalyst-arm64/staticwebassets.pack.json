@@ -17,6 +17,26 @@
       "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css.map"
     },
     {
+      "Id": "/Users/sushil/Documents/Projects/MyMauiApp/wwwroot/images/headphone.webp",
+      "PackagePath": "staticwebassets/images/headphone.webp"
+    },
+    {
+      "Id": "/Users/sushil/Documents/Projects/MyMauiApp/wwwroot/images/laptop.jpeg",
+      "PackagePath": "staticwebassets/images/laptop.jpeg"
+    },
+    {
+      "Id": "/Users/sushil/Documents/Projects/MyMauiApp/wwwroot/images/phone.jpg",
+      "PackagePath": "staticwebassets/images/phone.jpg"
+    },
+    {
+      "Id": "/Users/sushil/Documents/Projects/MyMauiApp/wwwroot/images/smartwatch.jpg",
+      "PackagePath": "staticwebassets/images/smartwatch.jpg"
+    },
+    {
+      "Id": "/Users/sushil/Documents/Projects/MyMauiApp/wwwroot/images/tablet.webp",
+      "PackagePath": "staticwebassets/images/tablet.webp"
+    },
+    {
       "Id": "/Users/sushil/Documents/Projects/MyMauiApp/wwwroot/index.html",
       "PackagePath": "staticwebassets/index.html"
     },

@@ -112,6 +112,30 @@
 		<data>
 		ycQqVUAfMwxtzR2VrJygf9px8lc=
 		</data>
+		<key>Resources/wwwroot/images/1.png</key>
+		<data>
+		RkAhmlTklZut1RDy3D71NNIUHag=
+		</data>
+		<key>Resources/wwwroot/images/headphone.webp</key>
+		<data>
+		olw8Dj5XWbAhEypItXJRsT4nOrk=
+		</data>
+		<key>Resources/wwwroot/images/laptop.jpeg</key>
+		<data>
+		C6eJ6TEVe8YTawO8CSoC4h8oaow=
+		</data>
+		<key>Resources/wwwroot/images/phone.jpg</key>
+		<data>
+		kG963mGYrPL5tHtVIhyHpFRwrNg=
+		</data>
+		<key>Resources/wwwroot/images/smartwatch.jpg</key>
+		<data>
+		O02+RdHvlRNtnjrq8eM49tgy1Ik=
+		</data>
+		<key>Resources/wwwroot/images/tablet.webp</key>
+		<data>
+		6HVmEBRmupH2fPifnYexf1Uu3rI=
+		</data>
 		<key>Resources/wwwroot/index.html</key>
 		<data>
 		iAaNeyfJZ+AZFvx6HtVZJVS5JpU=
@@ -418,14 +442,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CTGMNM8QcURi9vxn6AcMQIAXyn661sFyVb+TTNxLTCQ=
+			xvsgnozgKoGmNQ72uT46ynWfEVFX+MDfHWpzUDX8G+o=
 			</data>
 		</dict>
 		<key>MonoBundle/MyMauiApp.pdb</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Wri3FVc/tNkOY+896fVhQMrYS/++brDrdzwj+xUoSvU=
+			m5UYaAWNz5RsTBjET/eoQ/n0Fk+gGzEdkRcEIb8xkCY=
 			</data>
 		</dict>
 		<key>MonoBundle/System.AppContext.dll</key>
@@ -2015,6 +2039,48 @@
 			<key>hash2</key>
 			<data>
 			3qo3UHtt1eBcfATKJXtIrY+ZdPuBA21DhCoR49jAwbE=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/images/1.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			btJgJkGMGj7RICu0mKx7ev1q98uvKbXuHsRPOW7LCDM=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/images/headphone.webp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			taYvLvzGtnDaIPK8MDlSPYiutZmX159arg4ogKkc45I=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/images/laptop.jpeg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ne7gBjYGHG0rw8IT+aRGbdwDtM457cjq4RtZuvQjOJE=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/images/phone.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			X2bLCMuegsLKYyi6X0yBtur4OCmNrp626zhSMWQ8MD8=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/images/smartwatch.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zntDm1wC0gX+OWoFNlh+12HrRMS+IgP5wC7PI4Fi4vM=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/images/tablet.webp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Sv0dPldotda4d1yNeS4fZ/q4P5EKeRdp/E1O8zeULlI=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/index.html</key>
