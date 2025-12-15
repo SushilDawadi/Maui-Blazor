@@ -17,8 +17,11 @@
 </div>
 
 @code {
+
     private List<Product> products = new List<Product>
 {
+
+
 new Product
 {
 Id = 1,
@@ -27,6 +30,8 @@ Image = "images/laptop.jpeg",
 Price = 999.99m,
 LikesCount = 150
 },
+@* we must create images folder
+in wwwroot and give path to that image   *@
 new Product
 {
 Id = 2,
