@@ -1,0 +1,257 @@
+@page "/userdetails/{Id:int}"
+
+@using MauiBlazorApp.Models
+@using MyMauiApp.Data
+@inject NavigationManager NavigationManager
+
+@* /*
+* User Details Page
+*
+* Demonstrates:
+* - Route Parameters: {Id} captures value from URL
+* - Route Constraints: : int ensures Id must be an integer
+* - Parameter attribute to receive route values
+* - NavigationManager for going back
+* - Conditional rendering based on data availability
+*/ *@
+
+<div class="details-container">
+    @if (user == null)
+    {
+        <div class="error-card">
+            <h2>User Not Found</h2>
+            <p>The user with ID <strong>@Id</strong> does not exist.</p>
+            <button class="btn btn-primary" @onclick="GoBack">Back to Users</button>
+        </div>
+    }
+    else
+    {
+        <div class="details-card">
+            <div class="details-header">
+                <button class="btn btn-back" @onclick="GoBack">Back</button>
+                <h2>User Details</h2>
+            </div>
+
+            <div class="profile-section">
+                <div class="profile-image">
+                    @if (!string.IsNullOrEmpty(user.ImageUrl))
+                    {
+                        <img src="@user.ImageUrl" alt="@user.Name" />
+                    }
+                    else
+                    {
+                        <div class="placeholder-image">
+                            PI
+                        </div>
+                    }
+                </div>
+
+                <div class="profile-info">
+                    <h1>@user.Name</h1>
+                    <p class="user-id">User ID: #@user.Id</p>
+                </div>
+            </div>
+
+            <div class="details-grid">
+                <div class="detail-item">
+                    <span class="detail-label">Email Address</span>
+                    <span class="detail-value">@user.Email</span>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Age</span>
+                    <span class="detail-value">@user.Age years</span>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Phone Number</span>
+                    <span class="detail-value">@user.PhoneNumber</span>
+                </div>
+
+                @if (!string.IsNullOrEmpty(user.Address))
+                {
+                    <div class="detail-item full-width">
+                        <span class="detail-label">Address</span>
+                        <span class="detail-value">@user.Address</span>
+                    </div>
+                }
+
+                <div class="detail-item">
+                    <span class="detail-label">Created Date</span>
+                    <span class="detail-value">@user.CreatedDate.ToString("MMMM dd, yyyy")</span>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Created Time</span>
+                    <span class="detail-value">@user.CreatedDate.ToString("hh:mm: ss tt")</span>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private User? user;
+
+    protected override void OnInitialized()
+    {
+        user = UserData.UsersList.FirstOrDefault(u => u.Id == Id);
+    }
+
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/users");
+    }
+
+
+}
+
+<style>
+    .details-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 25px;
+    }
+
+    . details-card {
+        background: white;
+        border-radius: 12px;
+        padding: 35px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .error-card {
+        background: white;
+        border-radius: 12px;
+        padding: 60px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .error-card h2 {
+        color: #dc3545;
+        margin-bottom: 18px;
+    }
+
+    .details-header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 35px;
+        padding-bottom: 25px;
+        border-bottom: 2px solid #e9ecef;
+    }
+
+    . btn-back {
+        background: #6c757d;
+        color: white;
+        padding: 11px 22px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+
+    .btn-back:hover {
+        background: #545b62;
+    }
+
+    .profile-section {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+        margin-bottom: 45px;
+        padding: 30px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        color: white;
+    }
+
+    .profile-image img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid white;
+    }
+
+    .placeholder-image {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        background: white;
+        color: #667eea;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3. 8rem;
+        font-weight: bold;
+        border: 5px solid white;
+    }
+
+    .profile-info h1 {
+        margin: 0 0 12px 0;
+        font-size: 2.8rem;
+    }
+
+    . user-id {
+        margin: 0;
+        opacity: 0.92;
+        font-size: 1.25rem;
+    }
+
+    . details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 22px;
+    }
+
+    . detail-item {
+        padding: 22px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border-left: 5px solid #007bff;
+    }
+
+    .detail-item.full-width {
+        grid-column: 1 / -1;
+    }
+
+    . detail-label {
+        display: block;
+        font-weight: 600;
+        color: #6c757d;
+        margin-bottom: 10px;
+        font-size: 0.98rem;
+    }
+
+    . detail-value {
+        display: block;
+        color: #2c3e50;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .btn {
+        padding: 13px 26px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 15px;
+    }
+
+    . btn-primary {
+        background: #007bff;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: #0056b3;
+    }
+</style>

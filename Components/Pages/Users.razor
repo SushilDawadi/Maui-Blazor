@@ -1,0 +1,111 @@
+@page "/users"
+
+
+@using MyMauiApp.Data
+@inject NavigationManager NavigationManager
+
+@* /*
+* Users List Page
+*
+* Demonstrates:
+* - Multiple Routes (users route)
+* - NavigationManager for programmatic navigation
+* - Displaying list data from static store
+* - Component reusability (UserCard)
+* - Responsive grid layout
+*/ *@
+
+<div class="users-container">
+    <div class="header">
+        <h2>All Users (@UserData.UsersList.Count)</h2>
+        <button class="btn btn-success" @onclick="NavigateToAddUser">Add New User</button>
+    </div>
+
+    @if (UserData.UsersList.Count == 0)
+    {
+        <div class="empty-state">
+            <h3>No Users Found</h3>
+            <p>Click "Add New User" to create your first user.</p>
+        </div>
+    }
+    else
+    {
+        <div class="users-grid">
+            @foreach (var user in UserData.UsersList)
+            {
+                <UserCard User="@user" />
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private void NavigateToAddUser()
+    {
+        NavigationManager.NavigateTo("/adduser");
+    }
+}
+
+<style>
+    .users-container {
+        padding: 25px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 35px;
+    }
+
+    . header h2 {
+        margin: 0;
+        color: #2c3e50;
+    }
+
+    .btn {
+        padding: 12px 26px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 15px;
+    }
+
+    .btn-success {
+        background: #28a745;
+        color: white;
+    }
+
+    .btn-success:hover {
+        background: #218838;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .users-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 25px;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 80px 20px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .empty-state h3 {
+        color: #6c757d;
+        margin-bottom: 12px;
+    }
+
+    . empty-state p {
+        color: #adb5bd;
+    }
+</style>

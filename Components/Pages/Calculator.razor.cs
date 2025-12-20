@@ -16,7 +16,7 @@ For them to work together:
  */
 
 using Microsoft.AspNetCore.Components;
-namespace MyMauiApp.Pages 
+namespace MyMauiApp.Pages
 {
 
     public partial class Calculator : ComponentBase
@@ -40,6 +40,14 @@ namespace MyMauiApp.Pages
             result = (firstNumber * secondNumber).ToString();
         }
 
+        private void Clear()
+        {
+            firstNumber = 0;
+            secondNumber = 0;
+            result = "0";
+        }
+
+
         private void Divide()
         {
             if (secondNumber != 0)
@@ -51,5 +59,7 @@ namespace MyMauiApp.Pages
                 result = "Cannot divide by zero!";
             }
         }
+
+
     }
 }

@@ -1,0 +1,244 @@
+@page "/adduser"
+
+@using MauiBlazorApp.Models
+@using MyMauiApp.Data
+@inject NavigationManager NavigationManager
+
+@* /*
+* Add User Page
+*
+* Demonstrates:
+* - Multiple Routes (adduser route)
+* - EditForm component with model binding
+* - Input Components (InputText, InputNumber, InputTextArea)
+* - DataAnnotationsValidator for validation
+* - ValidationSummary and ValidationMessage
+* - OnValidSubmit event handler
+* - OnInvalidSubmit event handler
+* - NavigationManager for programmatic navigation
+*/ *@
+
+<div class="add-user-container">
+    <h2>Add New User</h2>
+
+    <EditForm Model="@newUser" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary class="validation-summary" />
+
+        <div class="form-card">
+
+            <div class="form-group">
+                <label for="name">Name: <span class="required">*</span></label>
+                <InputText id="name" class="form-control" @bind-Value="newUser.Name" placeholder="Enter full name" />
+                <ValidationMessage For="@(() => newUser.Name)" />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email: <span class="required">*</span></label>
+                <InputText id="email" type="email" class="form-control" @bind-Value="newUser.Email"
+                    placeholder="user@example.com" />
+                <ValidationMessage For="@(() => newUser.Email)" />
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age: <span class="required">*</span></label>
+                <InputNumber id="age" class="form-control" @bind-Value="newUser.Age" placeholder="18-120" />
+                <ValidationMessage For="@(() => newUser.Age)" />
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number: <span class="required">*</span></label>
+                <InputText id="phone" type="tel" class="form-control" @bind-Value="newUser.PhoneNumber"
+                    placeholder="10 digits" />
+                <ValidationMessage For="@(() => newUser.PhoneNumber)" />
+            </div>
+
+            <div class="form-group">
+                <label for="image">Profile Image URL (Optional):</label>
+                <InputText id="image" type="url" class="form-control" @bind-Value="newUser.ImageUrl"
+                    placeholder="https://example.com/image.jpg" />
+                <ValidationMessage For="@(() => newUser.ImageUrl)" />
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address (Optional):</label>
+                <InputTextArea id="address" class="form-control" @bind-Value="newUser.Address" rows="3"
+                    placeholder="Enter full address" />
+                <ValidationMessage For="@(() => newUser.Address)" />
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Add User</button>
+                <button type="button" class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+            </div>
+
+            @if (!string.IsNullOrEmpty(statusMessage))
+            {
+                <div class="alert @(isSuccess ? "alert-success" : "alert-danger")">
+                    @statusMessage
+                </div>
+            }
+        </div>
+    </EditForm>
+</div>
+
+@code {
+    private User newUser = new User();
+    private string statusMessage = string.Empty;
+    private bool isSuccess = false;
+
+    private void HandleValidSubmit()
+    {
+        try
+        {
+            newUser.Id = UserData.NextUserId++;
+            newUser.CreatedDate = DateTime.Now;
+            UserData.UsersList.Add(newUser);
+
+            statusMessage = $"User '{newUser.Name}' added successfully!";
+            isSuccess = true;
+
+            Task.Delay(1500).ContinueWith(_ =>
+            {
+                NavigationManager.NavigateTo("/users");
+            });
+        }
+        catch (Exception ex)
+        {
+            statusMessage = $"Error: {ex.Message}";
+            isSuccess = false;
+        }
+    }
+
+    private void HandleInvalidSubmit()
+    {
+        statusMessage = "Please fix the validation errors above.";
+        isSuccess = false;
+    }
+
+    private void Cancel()
+    {
+        NavigationManager.NavigateTo("/users");
+    }
+}
+
+<style>
+    .add-user-container {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h2 {
+        color: #2c3e50;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .form-card {
+        background: white;
+        border-radius: 12px;
+        padding: 35px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 22px;
+    }
+
+    . form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #34495e;
+    }
+
+    .required {
+        color: #dc3545;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 11px 14px;
+        border: 2px solid #dee2e6;
+        border-radius: 6px;
+        font-size: 15px;
+        transition: border-color 0.3s;
+        box-sizing: border-box;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #007bff;
+    }
+
+    .validation-message {
+        color: #dc3545;
+        font-size: 13px;
+        margin-top: 6px;
+        display: block;
+    }
+
+    .validation-summary {
+        color: #721c24;
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 25px;
+    }
+
+    . form-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    . btn {
+        flex: 1;
+        padding: 13px 25px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 15px;
+    }
+
+    .btn-primary {
+        background: #007bff;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: #0056b3;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background: #545b62;
+    }
+
+    .alert {
+        padding: 15px;
+        margin-top: 20px;
+        border-radius: 6px;
+        font-weight: 500;
+    }
+
+    .alert-success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .alert-danger {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+</style>
