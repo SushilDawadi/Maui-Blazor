@@ -1,6 +1,5 @@
 
-
-using MauiBlazorApp.Models;
+using MyMauiApp.Models;
 
 namespace MyMauiApp.Data
 {

@@ -47,15 +47,19 @@
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.Configuration.Json.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.DependencyInjection.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.Diagnostics.dll
+/Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.Diagnostics.Abstractions.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.FileProviders.Abstractions.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.FileProviders.Composite.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.FileProviders.Embedded.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.FileProviders.Physical.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.FileSystemGlobbing.dll
+/Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.Http.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.Logging.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.Logging.Abstractions.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.Logging.Debug.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.Options.dll
+/Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.Options.ConfigurationExtensions.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Extensions.Primitives.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.JSInterop.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Maui.Controls.dll
@@ -63,6 +67,7 @@
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Maui.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Maui.Essentials.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Maui.Graphics.dll
+/Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/System.Diagnostics.DiagnosticSource.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.Maui.Controls.HotReload.Forms.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/Microsoft.VisualStudio.DesignTools.TapContract.dll
@@ -94,7 +99,6 @@
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/System.Data.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/System.Diagnostics.Contracts.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/System.Diagnostics.Debug.dll
-/Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/System.Diagnostics.DiagnosticSource.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/System.Diagnostics.FileVersionInfo.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/System.Diagnostics.Process.dll
 /Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/publish/../MyMauiApp.app/Contents/MonoBundle/System.Diagnostics.StackTrace.dll

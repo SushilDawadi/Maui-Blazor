@@ -1,0 +1,163 @@
+@page "/usersList"
+@using MyMauiApp.Models
+@using MyMauiApp.Services
+@inject IUserService UserService
+
+
+@inject NavigationManager Navigation
+
+<PageTitle>User List</PageTitle>
+
+<div class="container">
+    <div class="header">
+        <h1>User Management System</h1>
+        <p class="subtitle">Service Layer with Dependency Injection Demo</p>
+    </div>
+
+    @* Loading indicator *@
+    @if (isLoading)
+    {
+        <div class="loading">
+            <p>Loading users...</p>
+        </div>
+    }
+    else if (users == null || !users.Any())
+    {
+        <div class="no-data">
+            <p>No users found.</p>
+        </div>
+    }
+    else
+    {
+        <div class="user-grid">
+            @foreach (var user in users)
+            {
+                <div class="user-card">
+                    <div class="user-info">
+                        <h3>@user.FullName</h3>
+                        <p class="username">@@@user.Username</p>
+                        <p class="detail">@user.Email</p>
+                        <p class="detail">@user.Phone</p>
+                        <p class="id-badge">ID: @user.Id</p>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-edit" @onclick="() => EditUser(user.Id)">
+                            Edit
+                        </button>
+                        <button class="btn btn-delete" @onclick="() => DeleteUser(user.Id)">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    <div class="action-bar">
+        <button class="btn btn-add" @onclick="AddNewUser">
+            Add New User
+        </button>
+    </div>
+
+
+</div>
+
+@code {
+    // ==========================================
+    // DEPENDENCY INJECTION in Blazor
+    // The @inject directive above automatically
+    // gives us an instance of IUserService
+    // ==========================================
+
+    private List<MyUser>? users;
+    private bool isLoading = true;
+
+    /// <summary>
+    /// Called when the component is initialized
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUsersAsync();
+    }
+
+    /// <summary>
+    /// Load all users using the injected service
+    /// </summary>
+    private async Task LoadUsersAsync()
+    {
+        isLoading = true;
+
+        try
+        {
+
+            users = await UserService.GetUsersAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading users: {ex.Message}");
+            users = new List<MyUser>();
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    /// <summary>
+    /// Navigate to the form to add a new user
+    /// </summary>
+    private void AddNewUser()
+    {
+        Navigation.NavigateTo("/user-form");
+    }
+
+    /// <summary>
+    /// Navigate to the form to edit an existing user
+    /// </summary>
+    private void EditUser(int userId)
+    {
+        Navigation.NavigateTo($"/user-form/{userId}");
+    }
+
+    /// <summary>
+    /// Delete a user after confirmation
+    /// </summary>
+    private async Task DeleteUser(int userId)
+    {
+        var user = users?.FirstOrDefault(u => u.Id == userId);
+        if (user == null)
+            return;
+
+        var page = Application.Current?.Windows.FirstOrDefault()?.Page;
+        if (page == null)
+            return;
+
+        var confirmed = await page.DisplayAlert(
+        "Confirm Delete",
+        $"Are you sure you want to delete {user.FullName}?",
+        "Yes",
+        "No");
+
+        if (!confirmed)
+            return;
+
+        try
+        {
+            var success = await UserService.DeleteUserAsync(userId);
+
+            if (success)
+            {
+                await page.DisplayAlert("Success", "User deleted successfully!", "OK");
+                await LoadUsersAsync();
+            }
+            else
+            {
+                await page.DisplayAlert("Error", "Failed to delete user.", "OK");
+            }
+        }
+        catch (Exception ex)
+        {
+            await page.DisplayAlert("Error", ex.Message, "OK");
+        }
+    }
+}

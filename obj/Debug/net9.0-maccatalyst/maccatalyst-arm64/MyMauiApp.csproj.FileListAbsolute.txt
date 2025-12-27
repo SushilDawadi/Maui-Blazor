@@ -272,7 +272,6 @@
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/scopedcss/Components/Layout/NavMenu.razor.rz.scp.css
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/scopedcss/bundle/MyMauiApp.styles.css
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/scopedcss/projectbundle/MyMauiApp.bundle.scp.css
-/Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/compressed/507mpm0zbt-e5tk7yf482.gz
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/compressed/skt08nz14f-6gzpyzhau4.gz
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/compressed/wlu4p3fece-8inm30yfxf.gz
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/compressed/nhwqemxyby-irriqq8gm0.gz
@@ -286,7 +285,6 @@
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/staticwebassets/msbuild.buildMultiTargeting.MyMauiApp.props
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/staticwebassets/msbuild.buildTransitive.MyMauiApp.props
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/staticwebassets.pack.json
-/Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/compressed/publish/507mpm0zbt-e5tk7yf482.br
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/compressed/publish/skt08nz14f-6gzpyzhau4.br
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/compressed/publish/wlu4p3fece-8inm30yfxf.br
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/compressed/publish/nhwqemxyby-irriqq8gm0.br
@@ -349,6 +347,12 @@
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/compressed/publish/qijfh4lpsp-e8c8883r1n.br
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/compressed/publish/d4hqjia58w-e8c8883r1n.br
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/MyMauiApp.sourcelink.json
+/Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/compressed/507mpm0zbt-tly80t8h59.gz
+/Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/compressed/publish/507mpm0zbt-tly80t8h59.br
+/Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/Microsoft.Extensions.Diagnostics.dll
+/Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/Microsoft.Extensions.Diagnostics.Abstractions.dll
+/Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/Microsoft.Extensions.Http.dll
+/Users/sushil/Documents/Projects/MyMauiApp/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/Microsoft.Extensions.Options.ConfigurationExtensions.dll
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/resourcestamps/Microsoft.AspNetCore.Authorization.stamp
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/resourcestamps/Microsoft.AspNetCore.Components.stamp
 /Users/sushil/Documents/Projects/MyMauiApp/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/resourcestamps/Microsoft.AspNetCore.Components.Forms.stamp

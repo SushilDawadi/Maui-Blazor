@@ -1,7 +1,8 @@
 @page "/adduser"
 
-@using MauiBlazorApp.Models
+
 @using MyMauiApp.Data
+@using MyMauiApp.Models
 @inject NavigationManager NavigationManager
 
 @* /*
@@ -94,6 +95,7 @@
             newUser.Id = UserData.NextUserId++;
             newUser.CreatedDate = DateTime.Now;
             UserData.UsersList.Add(newUser);
+
 
             statusMessage = $"User '{newUser.Name}' added successfully!";
             isSuccess = true;

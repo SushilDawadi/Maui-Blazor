@@ -78,15 +78,15 @@
 		</data>
 		<key>Resources/wwwroot/css/app.css</key>
 		<data>
-		ts0ajlLq0IdufFqJI1Vv1+luuJo=
+		1DCQvG2Y7FRBS83l2u2BXCLX2/w=
 		</data>
 		<key>Resources/wwwroot/css/app.css.br</key>
 		<data>
-		Lwlz9qFyTdAw1VWoOfkk3cir114=
+		wUwpfTVSjNCxZfn2MrAYxustATQ=
 		</data>
 		<key>Resources/wwwroot/css/app.css.gz</key>
 		<data>
-		VIH9ZYiNDrZUNbuqDbr+t3WH8hg=
+		iqBcsWvNQoaS7KQc/rwdEW1f73s=
 		</data>
 		<key>Resources/wwwroot/css/bootstrap/bootstrap.min.css</key>
 		<data>
@@ -211,14 +211,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			mxRYxWutZhyPT8/ciX6ujkgip8GIqdxb7zq4NELsrZM=
+			6czA/cWyHwpYYrgWDN187VQGLm8E8hGqJt3AQidDWsI=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.Extensions.Configuration.Binder.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sI7L2Z+IUH4IsKPw7hRaqg5U2lnrM3sDf34gPwnNRys=
+			LzBCA45IyuP1ai6i7ZN320hc13r0T8kY4C/EpO/lYsQ=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.Extensions.Configuration.FileExtensions.dll</key>
@@ -239,21 +239,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qvHEptw5euWLl/k4BjdII00Swp8ciKQ1MuOx7L8s7So=
+			vGi0Y3dFr6Mn/HbVe1iItLm9rhxpMD/nTt7Y3DIAL9A=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.Extensions.DependencyInjection.Abstractions.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			an9plHh+3oRoMV02+8MnqHYRPmGRUKzmBX+HSUpaeE4=
+			+JFFUCop/8WbS8dzRZt/M1F5UQUEzGCLZJco14vrIC4=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.Extensions.DependencyInjection.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YIG3d91GAPSeUw/RF2GIXIerGhdhPBgYSq3vt97hAb4=
+			CJmL2gdSDfOMvY0xj8Jfxq+VR+XDwqC4YKAOmSPTXV4=
+			</data>
+		</dict>
+		<key>MonoBundle/Microsoft.Extensions.Diagnostics.Abstractions.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xTd3aNSnIF1qH1vH8AATRV3J37BepK0CNlTxT538ErE=
+			</data>
+		</dict>
+		<key>MonoBundle/Microsoft.Extensions.Diagnostics.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			JbkfPNsGnojCmSfMNKkr3w/XofDpMK2DEb/Y1FF44gw=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.Extensions.FileProviders.Abstractions.dll</key>
@@ -291,11 +305,18 @@
 			MtltW2qjIxBWMsZPzFM5X7Ma6qtVyBENYPDR+eUWmsw=
 			</data>
 		</dict>
+		<key>MonoBundle/Microsoft.Extensions.Http.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			CNWmsXfI/ftY4HzrUJH7BMuv/QeXJUKjiqjKQ6qpleY=
+			</data>
+		</dict>
 		<key>MonoBundle/Microsoft.Extensions.Logging.Abstractions.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			NKrDMoyXIwo7qLpmmXr1JQ1GDn+Yz6X/TiXaEcUpJ54=
+			h+lR5ZCEN53cIaUH09ZmvDwIknEfE1DhkhI5o1FDNVs=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.Extensions.Logging.Debug.dll</key>
@@ -309,21 +330,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			iEmKl+AvQbvz8gaHLwV3SmOO7AdiOhBLTO98PNMQxcQ=
+			KNeDINsltYcR4Ik6r2gt8s66/PLpaKHbJl2z7H3JPrg=
+			</data>
+		</dict>
+		<key>MonoBundle/Microsoft.Extensions.Options.ConfigurationExtensions.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			X6mP7Oka1CFGr4Im7maghxcvai8wAyqsa1P6IuDHJVY=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.Extensions.Options.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GmkKV5PkYYBL8urbjJV7wAQYkgTbIWZ5Rkvpqu8h0NE=
+			k9k30fNnuRJWRopDNYlP39Wuk/A5+bXBAiBdFNNCmr8=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.Extensions.Primitives.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LpX4lYnrAPbD+mp4bIFn/jEPi4MuopGxI/SF2rI9+O4=
+			YUXIScClHQrI8RsordsIR39d2YJR1jjP6beogkb8OY8=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.JSInterop.dll</key>
@@ -442,14 +470,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uHa0CLWAwzB8qw930qr5lgyCFc7XKRwJRkLShN6d9Bo=
+			Z9jcbBqla97nifpgAb8Qj2cEcrWQ/PQxMJ/+ne8Tn+g=
 			</data>
 		</dict>
 		<key>MonoBundle/MyMauiApp.pdb</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ucp7qu4Kd3wWbUQE82bb8CQy/fXtfLM1MH1ydL8Vi3Y=
+			p9mgg+pzYlMmLBcTq/TuIoNkrzjiONZ0si4LPSvzz8Y=
 			</data>
 		</dict>
 		<key>MonoBundle/System.AppContext.dll</key>
@@ -603,7 +631,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Yu76L3F5tZY6iXWPw43srekTxlAy02Ftry4o75EqpLs=
+			mz6RulX1jbXkCftoPcqEdBJjbiw+568AOs9VwU6trs8=
 			</data>
 		</dict>
 		<key>MonoBundle/System.Diagnostics.FileVersionInfo.dll</key>
@@ -1982,21 +2010,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bhCZyC/yM2+DaFXr8z25+5MeWfXWqMJNNA4ZLAXbjjU=
+			MbWuUuuUB55Cn4+I7s5YMK+HM06oLv4mcYnMZaUaH9o=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/css/app.css.br</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			eqlsvw/N8zKnAKc05YDjHT7YIDSUfr5wmQ20CD/lmXo=
+			dGLkyiNo6e037Nisaa9IadCnzLNQFVDvOJj/224dvLk=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/css/app.css.gz</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			23E0PDhrvNBwbEzDAumCntFauPUEKMNOIO7ejoRR3kY=
+			MqzHLGet/E/yAt6+nZJSruA67ZriIJ2wtW7u4IjYh38=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/css/bootstrap/bootstrap.min.css</key>

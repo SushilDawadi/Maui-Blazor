@@ -1,0 +1,163 @@
+@page "/user-form"
+@page "/user-form/{UserId:int}"
+@using MyMauiApp.Models
+@using MyMauiApp.Services
+@inject IUserService UserService
+@inject NavigationManager Navigation
+
+<PageTitle>@pageTitle</PageTitle>
+
+<div class="container">
+    <div class="form-container">
+        <h2>@pageTitle</h2>
+
+        @if (isLoading)
+        {
+            <div class="loading">
+                <p>Loading...</p>
+            </div>
+        }
+        else
+        {
+            <EditForm Model="@currentUser" OnValidSubmit="@HandleSubmit">
+                <div class="form-group">
+                    <label>Username *</label>
+                    <InputText @bind-Value="currentUser.Username" class="form-control" placeholder="Enter username" />
+                </div>
+
+                <div class="form-group">
+                    <label>Email *</label>
+                    <InputText @bind-Value="currentUser.Email" class="form-control" placeholder="Enter email" />
+                </div>
+
+                <div class="form-group">
+                    <label>First Name *</label>
+                    <InputText @bind-Value="currentUser.FirstName" class="form-control" placeholder="Enter first name" />
+                </div>
+
+                <div class="form-group">
+                    <label>Last Name *</label>
+                    <InputText @bind-Value="currentUser.LastName" class="form-control" placeholder="Enter last name" />
+                </div>
+
+                <div class="form-group">
+                    <label>Phone</label>
+                    <InputText @bind-Value="currentUser.Phone" class="form-control" placeholder="Enter phone number" />
+                </div>
+
+                @if (!string.IsNullOrEmpty(errorMessage))
+                {
+                    <div class="error-message">
+                        @errorMessage
+                    </div>
+                }
+
+                <div class="button-group-form">
+                    <button type="submit" class="btn btn-save">
+                        Save
+                    </button>
+                    <button type="button" class="btn btn-cancel" @onclick="Cancel">
+                        Cancel
+                    </button>
+                </div>
+            </EditForm>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int? UserId { get; set; }
+
+    private MyUser currentUser = new();
+    private bool isLoading = false;
+    private string pageTitle = "Add New User";
+    private string errorMessage = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (UserId.HasValue)
+        {
+            pageTitle = "Edit User";
+            isLoading = true;
+
+            try
+            {
+                var user = await UserService.GetUserByIdAsync(UserId.Value);
+
+                if (user != null)
+                {
+                    currentUser = user;
+                }
+                else
+                {
+                    errorMessage = "User not found!";
+                }
+            }
+            catch (Exception ex)
+            {
+                errorMessage = $"Error loading user: {ex.Message}";
+            }
+            finally
+            {
+                isLoading = false;
+            }
+        }
+    }
+
+    private async Task HandleSubmit()
+    {
+        if (string.IsNullOrWhiteSpace(currentUser.Username) ||
+        string.IsNullOrWhiteSpace(currentUser.Email) ||
+        string.IsNullOrWhiteSpace(currentUser.FirstName) ||
+        string.IsNullOrWhiteSpace(currentUser.LastName))
+        {
+            errorMessage = "Please fill all required fields (*)";
+            return;
+        }
+
+        isLoading = true;
+        errorMessage = string.Empty;
+
+        var page = Application.Current?.Windows.FirstOrDefault()?.Page;
+        if (page == null)
+            return;
+
+        try
+        {
+            if (UserId.HasValue)
+            {
+                var updatedUser = await UserService.UpdateUserAsync(UserId.Value, currentUser);
+
+                if (updatedUser != null)
+                {
+                    await page.DisplayAlert("Success", "User updated successfully!", "OK");
+                    Navigation.NavigateTo("/usersList");
+                }
+                else
+                {
+                    errorMessage = "Failed to update user.";
+                }
+            }
+            else
+            {
+                await UserService.AddUserAsync(currentUser);
+                await page.DisplayAlert("Success", "User added successfully!", "OK");
+                Navigation.NavigateTo("/usersList");
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo("/usersList");
+    }
+}

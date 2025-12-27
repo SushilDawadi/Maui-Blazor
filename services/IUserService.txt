@@ -1,0 +1,15 @@
+Teaching Points:
+
+Interface = Contract: Any class implementing this MUST have all these methods
+Abstraction: We define WHAT to do, not HOW to do it
+Task<>: All methods are async (don't block the UI)
+**User? **: The ?  means it can return null (user not found)
+
+
+
+Why Separate IUserService and UserService
+-> Defines a clear contract for user operations
+-> Keeps UI independent from implementation
+-> Allows easy switching (memory, database, API)
+-> Makes testing simple and safe
+-> Improves maintainability and scalability
