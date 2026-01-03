@@ -470,14 +470,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Z9jcbBqla97nifpgAb8Qj2cEcrWQ/PQxMJ/+ne8Tn+g=
+			wtrI6UsUqGL0m0NPTwFGhZuZNIbEkQMwbzIJ5z3Sjvo=
 			</data>
 		</dict>
 		<key>MonoBundle/MyMauiApp.pdb</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			p9mgg+pzYlMmLBcTq/TuIoNkrzjiONZ0si4LPSvzz8Y=
+			MOenn1SFxgj45JeNRdpzYb1kBXS2h0X2rOi3wGY5TDc=
+			</data>
+		</dict>
+		<key>MonoBundle/SQLite-net.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/0h0FMSssyqe6OCqk97walP3tX35PS56JgVOGN+Fcj4=
+			</data>
+		</dict>
+		<key>MonoBundle/SQLitePCLRaw.batteries_v2.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kylPuIiR6IKN27UfH1K8VCl9n9pSQbikaTX+p10gtqM=
+			</data>
+		</dict>
+		<key>MonoBundle/SQLitePCLRaw.core.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			l57cyQVqwG1fUrEtm3czsSF5FKtQvxI6sxLgJ+esV6U=
+			</data>
+		</dict>
+		<key>MonoBundle/SQLitePCLRaw.provider.e_sqlite3.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			RwA/P9Qppbadb8bP0Wv82XkQMhcB5eeoiQYWQ8gdCGU=
 			</data>
 		</dict>
 		<key>MonoBundle/System.AppContext.dll</key>
@@ -1738,6 +1766,13 @@
 			<key>hash2</key>
 			<data>
 			C3hp2w7Wi0t6683Iyn9rb3Tw4oad0jHoIiyjAiQl/Zo=
+			</data>
+		</dict>
+		<key>MonoBundle/libe_sqlite3.dylib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			MNvyjg5Gho2oyULM8BYo8ASm1lRyl4CJuG5bb4sUr5k=
 			</data>
 		</dict>
 		<key>MonoBundle/ms/Microsoft.Maui.Controls.resources.dll</key>

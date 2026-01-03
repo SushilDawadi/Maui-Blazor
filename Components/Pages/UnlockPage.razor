@@ -1,0 +1,253 @@
+@page "/unlock"
+@using MyMauiApp.Components.Layout
+@layout SetupLayout
+@inject AuthService AuthService
+@inject NavigationManager Navigation
+
+<div class="unlock-container">
+    <div class="unlock-card">
+        <div class="unlock-header">
+            <div class="lock-icon">LOCKED</div>
+            <h2>App Locked</h2>
+            <p>Welcome back, <strong>@username</strong></p>
+        </div>
+
+        <div class="unlock-form">
+            <div class="form-group">
+                <label>Enter Your PIN/Password:</label>
+                <input type="password" @bind="enteredPin" @bind:event="oninput" @onkeypress="HandleKeyPress"
+                    placeholder="Enter PIN" class="form-input" autofocus />
+            </div>
+
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="alert alert-error">
+                    @errorMessage
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(successMessage))
+            {
+                <div class="alert alert-success">
+                    @successMessage
+                </div>
+            }
+
+            <button @onclick="UnlockApp" class="btn-unlock">
+                Unlock
+            </button>
+
+            <button @onclick="ResetApp" class="btn-reset">
+                Reset App (Clear All Data)
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .unlock-container {
+        padding: 20px;
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .unlock-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
+
+    .unlock-header {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        padding: 40px 30px;
+        text-align: center;
+    }
+
+    .lock-icon {
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        font-size: 12px;
+        font-weight: bold;
+        border: 3px solid white;
+    }
+
+    .unlock-header h2 {
+        margin: 0 0 10px 0;
+        font-size: 1.8em;
+    }
+
+    .unlock-header p {
+        margin: 0;
+        font-size: 1em;
+        opacity: 0.95;
+    }
+
+    .unlock-form {
+        padding: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: border-color 0.3s;
+        box-sizing: border-box;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #f5576c;
+    }
+
+    .alert {
+        padding: 12px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+    }
+
+    .alert-error {
+        background-color: #fee;
+        color: #c33;
+        border: 1px solid #fcc;
+    }
+
+    .alert-success {
+        background-color: #efe;
+        color: #3c3;
+        border: 1px solid #cfc;
+    }
+
+    .btn-unlock {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s;
+        margin-bottom: 10px;
+    }
+
+    .btn-unlock:hover {
+        transform: translateY(-2px);
+    }
+
+    .btn-unlock:active {
+        transform: translateY(0);
+    }
+
+    .btn-reset {
+        width: 100%;
+        padding: 12px;
+        background: white;
+        color: #dc3545;
+        border: 2px solid #dc3545;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .btn-reset:hover {
+        background: #dc3545;
+        color: white;
+    }
+</style>
+
+@code {
+    string username = "";
+    string enteredPin = "";
+    string errorMessage = "";
+    string successMessage = "";
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("Unlock page loading...");
+
+        // Check if user has PIN setup
+        bool hasPin = AuthService.HasPin();
+
+        if (!hasPin)
+        {
+            Console.WriteLine("No PIN found, redirecting to setup");
+            Navigation.NavigateTo("/setup");
+            return;
+        }
+
+        username = AuthService.GetUsername();
+        Console.WriteLine($"Unlock page loaded for user: {username}");
+    }
+
+    void UnlockApp()
+    {
+        errorMessage = "";
+        successMessage = "";
+
+        Console.WriteLine("Unlock attempt");
+
+        if (string.IsNullOrWhiteSpace(enteredPin))
+        {
+            errorMessage = "Please enter your PIN";
+            Console.WriteLine("No PIN entered");
+            return;
+        }
+
+        bool correct = AuthService.CheckPin(enteredPin);
+
+        if (correct)
+        {
+            Console.WriteLine("PIN correct! Unlocking.. .");
+            AuthService.UnlockApp();
+            successMessage = "Unlocked! Redirecting...";
+
+            Task.Delay(1000).ContinueWith(_ =>
+            {
+                Navigation.NavigateTo("/", forceLoad: true);
+            });
+        }
+        else
+        {
+            errorMessage = "Incorrect PIN! Please try again.";
+            Console.WriteLine("Incorrect PIN");
+            enteredPin = "";
+        }
+    }
+
+    void ResetApp()
+    {
+        Console.WriteLine("Resetting app...");
+        AuthService.ClearAll();
+        Navigation.NavigateTo("/setup");
+    }
+
+    void HandleKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            UnlockApp();
+        }
+    }
+}

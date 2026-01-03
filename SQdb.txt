@@ -1,0 +1,9 @@
+Using Visual Studio:
+Right-click on your project → Manage NuGet Packages
+Click Browse tab
+Search for: sqlite-net-pcl
+Click Install
+
+
+VS CODE 
+dotnet add package sqlite-net-pcl

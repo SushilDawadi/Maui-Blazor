@@ -2,7 +2,6 @@ namespace MyMauiApp.Models
 {
     /// <summary>
     /// User model class - represents a user in our system
-    /// This is a simple POCO (Plain Old CLR Object) class
     /// </summary>
     /// 
     public class MyUser

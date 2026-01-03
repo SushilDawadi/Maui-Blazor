@@ -1,0 +1,17 @@
+@* Setup Layout for Setup and Unlock pages (no sidebar/header/footer) *@
+
+@inherits LayoutComponentBase
+
+<div class="empty-layout">
+    @Body
+</div>
+
+<style>
+    .empty-layout {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>

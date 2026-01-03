@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MyMauiApp.Data;
 using MyMauiApp.Services;
 
 namespace MyMauiApp;
@@ -28,16 +29,18 @@ public static class MauiProgram
 		builder.Services.AddHttpClient();
 
 		// ========================================
-		// OPTION 1: Use LOCAL data (UserService)
+		// 1: Use LOCAL data (UserService)
 		// Uncomment the line below to use in-memory data
 		// ========================================
-		//builder.Services.AddSingleton<IUserService, UserService>();
+		builder.Services.AddSingleton<IUserService, UserService>();
+		builder.Services.AddSingleton<AuthService>();
+		builder.Services.AddSingleton<AppDatabase>();
 
 		// ========================================
-		// OPTION 2: Use API data (TestUserService)
+		// 2.Use API data (TestUserService)
 		// Uncomment the line below to use real API data
 		// ========================================
-		builder.Services.AddSingleton<IUserService, TestUserService>();
+		//builder.Services.AddSingleton<IUserService, TestUserService>();
 
 		return builder.Build();
 	}

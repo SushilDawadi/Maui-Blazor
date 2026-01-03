@@ -1,0 +1,307 @@
+@page "/authors"
+@inject AppDatabase Database
+@using MyMauiApp.Data
+@using MyMauiApp.Models
+
+<div class="container">
+    <div class="header">
+        <h2>Author Management</h2>
+        <button @onclick="ShowAddForm" class="btn-add">Add Author</button>
+    </div>
+
+    @if (showForm)
+    {
+        <div class="form-box">
+            <h3>@(isEditing ? "Edit Author" : "Add New Author")</h3>
+
+            <label>Name:</label>
+            <input type="text" @bind="author.Name" class="input" />
+
+            <label>Email:</label>
+            <input type="email" @bind="author.Email" class="input" />
+
+            <label>Country:</label>
+            <input type="text" @bind="author.Country" class="input" />
+
+            <label>Date of Birth:</label>
+            <input type="date" @bind="author.DateOfBirth" class="input" />
+
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="error-message">@errorMessage</div>
+            }
+
+            <div class="form-buttons">
+                <button @onclick="SaveAuthor" class="btn-save">Save</button>
+                <button @onclick="CancelForm" class="btn-cancel">Cancel</button>
+            </div>
+        </div>
+    }
+
+    <div class="authors-list">
+        @if (authors == null)
+        {
+            <p>Loading authors...</p>
+        }
+        else if (authors.Count == 0)
+        {
+            <p>No authors found. Add your first author!</p>
+        }
+        else
+        {
+            <div class="stats">
+                <p>Total Authors: <strong>@authors.Count</strong></p>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Country</th>
+                        <th>Date of Birth</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var a in authors)
+                    {
+                        <tr>
+                            <td>@a.Id</td>
+                            <td>@a.Name</td>
+                            <td>@a.Email</td>
+                            <td>@a.Country</td>
+                            <td>@GetFormattedDate(a.DateOfBirth)</td>
+                            <td>
+                                <button @onclick="() => EditAuthor(a)" class="btn-edit">Edit</button>
+                                <button @onclick="() => DeleteAuthor(a)" class="btn-delete">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+<style>
+    .container {
+        padding: 20px;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .form-box {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-box h3 {
+        margin: 0 0 15px 0;
+    }
+
+    .form-box label {
+        display: block;
+        margin: 10px 0 5px 0;
+        font-weight: 600;
+    }
+
+    .input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .error-message {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+    }
+
+    .form-buttons {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+    }
+
+    . stats {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .stats p {
+        margin: 0;
+    }
+
+    .table {
+        width: 100%;
+        background: white;
+        border-collapse: collapse;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .table th {
+        background: #007bff;
+        color: white;
+        padding: 12px;
+        text-align: left;
+    }
+
+    .table td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    .btn-add,
+    .btn-save,
+    .btn-cancel,
+    .btn-edit,
+    .btn-delete {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .btn-add {
+        background: #28a745;
+        color: white;
+    }
+
+    .btn-save {
+        background: #007bff;
+        color: white;
+    }
+
+    .btn-cancel {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn-edit {
+        background: #ffc107;
+        color: black;
+        font-size: 12px;
+        padding: 6px 12px;
+        margin-right: 5px;
+    }
+
+    .btn-delete {
+        background: #dc3545;
+        color: white;
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+</style>
+
+@code {
+    List<Author> authors;
+    Author author = new Author();
+    bool showForm = false;
+    bool isEditing = false;
+    string errorMessage = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAuthors();
+    }
+
+    async Task LoadAuthors()
+    {
+        authors = await Database.GetAuthorsAsync();
+    }
+
+    void ShowAddForm()
+    {
+        author = new Author { DateOfBirth = DateTime.Now.AddYears(-30) };
+        isEditing = false;
+        showForm = true;
+        errorMessage = "";
+    }
+
+    void EditAuthor(Author a)
+    {
+        author = new Author
+        {
+            Id = a.Id,
+            Name = a.Name,
+            Email = a.Email,
+            Country = a.Country,
+            DateOfBirth = a.DateOfBirth
+        };
+        isEditing = true;
+        showForm = true;
+        errorMessage = "";
+    }
+
+    async Task SaveAuthor()
+    {
+        errorMessage = "";
+
+        if (string.IsNullOrWhiteSpace(author.Name))
+        {
+            errorMessage = "Name is required";
+            return;
+        }
+
+        try
+        {
+            if (isEditing)
+            {
+                await Database.UpdateAuthorAsync(author);
+            }
+            else
+            {
+                await Database.AddAuthorAsync(author);
+            }
+
+            await LoadAuthors();
+            CancelForm();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error: {ex.Message}";
+        }
+    }
+
+    async Task DeleteAuthor(Author a)
+    {
+        await Database.DeleteAuthorAsync(a);
+        await LoadAuthors();
+    }
+
+    void CancelForm()
+    {
+        showForm = false;
+        author = new Author();
+        isEditing = false;
+        errorMessage = "";
+    }
+
+    // Helper method to format date
+    string GetFormattedDate(DateTime date)
+    {
+        return date.ToString("MM/dd/yyyy");
+    }
+}

@@ -1,0 +1,227 @@
+@page "/setup"
+@using MyMauiApp.Components.Layout
+@layout SetupLayout
+@inject AuthService AuthService
+@inject NavigationManager Navigation
+
+<div class="setup-container">
+    <div class="setup-card">
+        <div class="setup-header">
+            <h2>Book Management System</h2>
+            <h3>Setup Your Account</h3>
+        </div>
+
+        <div class="setup-form">
+            <div class="form-group">
+                <label>Username: </label>
+                <input type="text" @bind="username" @bind:event="oninput" placeholder="Enter your username"
+                    class="form-input" />
+            </div>
+
+            <div class="form-group">
+                <label>PIN/Password (minimum 4 characters):</label>
+                <input type="password" @bind="pin" @bind:event="oninput" placeholder="Enter PIN" class="form-input" />
+            </div>
+
+            <div class="form-group">
+                <label>Confirm PIN/Password:</label>
+                <input type="password" @bind="confirmPin" @bind:event="oninput" placeholder="Re-enter PIN"
+                    class="form-input" />
+            </div>
+
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="alert alert-error">
+                    @errorMessage
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(successMessage))
+            {
+                <div class="alert alert-success">
+                    @successMessage
+                </div>
+            }
+
+            <button @onclick="SetupAccount" class="btn-primary">
+                Setup Account
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .setup-container {
+        padding: 20px;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .setup-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
+
+    .setup-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .setup-header h2 {
+        margin: 0 0 10px 0;
+        font-size: 1.8em;
+    }
+
+    .setup-header h3 {
+        margin: 0;
+        font-size: 1.2em;
+        font-weight: normal;
+        opacity: 0.9;
+    }
+
+    .setup-form {
+        padding: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: border-color 0.3s;
+        box-sizing: border-box;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #667eea;
+    }
+
+    .alert {
+        padding: 12px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+    }
+
+    .alert-error {
+        background-color: #fee;
+        color: #c33;
+        border: 1px solid #fcc;
+    }
+
+    .alert-success {
+        background-color: #efe;
+        color: #3c3;
+        border: 1px solid #cfc;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+    }
+
+    .btn-primary:active {
+        transform: translateY(0);
+    }
+</style>
+
+@code {
+    string username = "";
+    string pin = "";
+    string confirmPin = "";
+    string errorMessage = "";
+    string successMessage = "";
+
+    void SetupAccount()
+    {
+        errorMessage = "";
+        successMessage = "";
+
+        Console.WriteLine("Setup button clicked");
+
+        // Validation
+        if (string.IsNullOrWhiteSpace(username))
+        {
+            errorMessage = "Please enter a username";
+            Console.WriteLine("Error: No username");
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(pin))
+        {
+            errorMessage = "Please enter a PIN/Password";
+            Console.WriteLine("Error: No PIN");
+            return;
+        }
+
+        if (pin.Length < 4)
+        {
+            errorMessage = "PIN/Password must be at least 4 characters";
+            Console.WriteLine($"Error: PIN too short ({pin.Length} chars)");
+            return;
+        }
+
+        if (pin != confirmPin)
+        {
+            errorMessage = "PINs do not match";
+            Console.WriteLine("Error: PINs don't match");
+            return;
+        }
+
+        try
+        {
+            Console.WriteLine("Saving data...");
+
+            // Save username to Preferences
+            AuthService.SetUsername(username);
+
+            // Save PIN to Preferences
+            AuthService.SetPin(pin);
+
+            // Unlock app
+            AuthService.UnlockApp();
+
+            successMessage = "Account created successfully! Redirecting... ";
+            Console.WriteLine("Setup complete! Navigating to home...");
+
+            // Navigate to home after short delay
+            Task.Delay(1500).ContinueWith(_ =>
+            {
+                Navigation.NavigateTo("/", forceLoad: true);
+            });
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error: {ex.Message}";
+            Console.WriteLine($"Exception during setup: {ex.Message}");
+        }
+    }
+}

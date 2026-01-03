@@ -47,7 +47,7 @@ namespace MyMauiApp.Services
                     Phone = "555-0103"
                 }
             };
-            _nextId = 4; // Next user will get ID 4
+            _nextId = 4;
         }
 
 
@@ -115,7 +115,7 @@ namespace MyMauiApp.Services
 
 
             _users.Remove(user);
-            return true; // Success! 
+            return true;
         }
     }
 }

@@ -1,22 +1,136 @@
-﻿@page "/home"
+﻿@page "/"
+@inject AuthService AuthService
+@inject NavigationManager Navigation
 
-
-
-<input type="text" placeholder="Enter your name" @bind="name" />
-<h1>Hello, @name!</h1>
-@* one way data binding  *@
-
-<p>Hello World</p>
-
-
-<MessageCard Message="This is danger" Title="Alert" />
-<MessageCard Message="happy birthday to you" Title="Wish" />
-<MessageCard Message="Happy wedding" Title="Wish" />
+<div class="container">
+    <div class="header-section">
+        <h2>Welcome, @username!</h2>
+        <button @onclick="Lock" class="btn-lock">Lock App</button>
+    </div>
 
 
 
 
+    <button @onclick="ClearData" class="btn-clear">Clear All Data</button>
+</div>
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .header-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-section h2 {
+        margin: 0;
+    }
+
+    .info-box {
+        background: #d4edda;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border-left: 4px solid #28a745;
+    }
+
+    .info-box h3 {
+        margin: 0 0 10px 0;
+        color: #155724;
+    }
+
+    .info-box p {
+        margin: 0;
+        color: #155724;
+    }
+
+    .data-box {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .data-box h4 {
+        margin: 0 0 15px 0;
+    }
+
+    .data-box p {
+        margin: 8px 0;
+    }
+
+    .btn-lock {
+        padding: 10px 20px;
+        background-color: #ffc107;
+        color: #000;
+        border: none;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .btn-lock:hover {
+        background-color: #e0a800;
+    }
+
+    .btn-clear {
+        padding: 10px 20px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .btn-clear:hover {
+        background-color: #c82333;
+    }
+</style>
 
 @code {
-    private string name = "ICP";
+    string username = "";
+
+    protected override void OnInitialized()
+    {
+        // Check if user needs to setup PIN
+        if (!AuthService.HasPin())
+        {
+            Navigation.NavigateTo("/setup");
+            return;
+        }
+
+        // Check if app is locked
+        if (AuthService.IsLocked())
+        {
+            Navigation.NavigateTo("/unlock");
+            return;
+        }
+
+        // Get username
+        username = AuthService.GetUsername();
+    }
+
+    void Lock()
+    {
+        AuthService.LockApp();
+        Navigation.NavigateTo("/unlock");
+    }
+
+    void ClearData()
+    {
+        AuthService.ClearAll();
+        Navigation.NavigateTo("/setup");
+    }
 }
