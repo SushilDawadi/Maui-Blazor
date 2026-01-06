@@ -34,7 +34,9 @@ public static class MauiProgram
 		// ========================================
 		builder.Services.AddSingleton<IUserService, UserService>();
 		builder.Services.AddSingleton<AuthService>();
-		builder.Services.AddSingleton<AppDatabase>();
+		builder.Services.AddSingleton<DatabaseService>();
+		builder.Services.AddSingleton<AuthorService>();
+		builder.Services.AddSingleton<BookService>();
 
 		// ========================================
 		// 2.Use API data (TestUserService)

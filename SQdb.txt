@@ -7,3 +7,18 @@ Click Install
 
 VS CODE 
 dotnet add package sqlite-net-pcl
+
+Steps:
+Open SQL Server Object Explorer
+
+Go to View → SQL Server Object Explorer (or press Ctrl+\, Ctrl+S)
+Add SQLite Connection
+
+Right-click on SQL Server node
+Select Add SQL Server... 
+Click Browse tab → Local → Find your database file
+Or use connection string: Data Source=C:\path\to\your\book_management.db
+Browse Tables
+
+Expand the connection → Expand Tables
+Right-click on any table → View Data to see records

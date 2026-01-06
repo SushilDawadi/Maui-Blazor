@@ -1,7 +1,10 @@
 @page "/authors"
-@inject AppDatabase Database
 @using MyMauiApp.Data
 @using MyMauiApp.Models
+@using MyMauiApp.Services
+@inject AuthorService AuthorService
+
+
 
 <div class="container">
     <div class="header">
@@ -216,7 +219,7 @@
 </style>
 
 @code {
-    List<Author> authors;
+    List<Author>? authors;
     Author author = new Author();
     bool showForm = false;
     bool isEditing = false;
@@ -229,7 +232,7 @@
 
     async Task LoadAuthors()
     {
-        authors = await Database.GetAuthorsAsync();
+        authors = await AuthorService.GetAuthorsAsync();
     }
 
     void ShowAddForm()
@@ -269,11 +272,11 @@
         {
             if (isEditing)
             {
-                await Database.UpdateAuthorAsync(author);
+                await AuthorService.UpdateAuthorAsync(author);
             }
             else
             {
-                await Database.AddAuthorAsync(author);
+                await AuthorService.AddAuthorAsync(author);
             }
 
             await LoadAuthors();
@@ -287,7 +290,7 @@
 
     async Task DeleteAuthor(Author a)
     {
-        await Database.DeleteAuthorAsync(a);
+        await AuthorService.DeleteAuthorAsync(a);
         await LoadAuthors();
     }
 

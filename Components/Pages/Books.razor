@@ -1,8 +1,9 @@
 @page "/books"
-@inject AppDatabase Database
+
 @using MyMauiApp.Data
 @using MyMauiApp.Models
-
+@using MyMauiApp.Services
+@inject BookService BookService
 <div class="container">
     <div class="header">
         <h2>Book Management</h2>
@@ -245,11 +246,11 @@
 </style>
 
 @code {
-    List<Book> books;
+    List<Book>? books;
     Book book = new Book();
     bool showForm = false;
     bool isEditing = false;
-    string searchText = "";
+
     string errorMessage = "";
 
     protected override async Task OnInitializedAsync()
@@ -259,8 +260,8 @@
 
     async Task LoadBooks()
     {
-        books = await Database.GetBooksAsync();
-        searchText = "";
+        books = await BookService.GetBooksAsync();
+
     }
 
     void ShowAddForm()
@@ -308,11 +309,11 @@
         {
             if (isEditing)
             {
-                await Database.UpdateBookAsync(book);
+                await BookService.UpdateBookAsync(book);
             }
             else
             {
-                await Database.AddBookAsync(book);
+                await BookService.AddBookAsync(book);
             }
 
             await LoadBooks();
@@ -326,7 +327,7 @@
 
     async Task DeleteBook(Book b)
     {
-        await Database.DeleteBookAsync(b);
+        await BookService.DeleteBookAsync(b);
         await LoadBooks();
     }
 
